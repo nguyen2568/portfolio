@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@variant dark (.dark &);
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+body {
+  font-family: var(--font-mono); 
+}
