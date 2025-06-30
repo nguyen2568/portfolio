@@ -1,3 +1,3 @@
 import Navbar from "./Navbar";
-
-export { Navbar };
+import LampDemo from "./Lamb";
+export { LampDemo, Navbar };

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Moon, Sun } from 'lucide-react';
+import { motion } from "motion/react";
+import { cn } from "../utils/meteor";
 
-const Navbar = () => {
+const Navbar = ({number, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { isDarkMode, toggleTheme } = useTheme();
+  const [isTop, setIsTop] = useState(true);
 
   // Function to scroll to a section
   const scrollToSection = (sectionId) => {
@@ -24,6 +27,12 @@ const Navbar = () => {
 
   // Function to determine active section based on scroll position
   useEffect(() => {
+    setIsTop(window.pageYOffset <= 100); // Check if at the top of the page
+    window.onscroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsTop(scrollPosition <= 100); // Check if at the top of the page
+    }
+      
     const handleScroll = () => {
       const sections = ['home', 'about', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar
@@ -48,8 +57,41 @@ const Navbar = () => {
     return `${base} ${activeSection === sectionId ? active : inactive}`;
   };
 
+  const meteors = new Array(number || 20).fill(true);
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <nav className={`fixed z-2 top-0 left-0 w-full bg-white border-b 
+    ${isDarkMode && isTop &&  'border-none'} ${isTop ? '' : 'shadow-md'} ${isDarkMode ? 'dark:border-gray-700' : 'border-white'} dark:bg-gray-900 transition-all duration-300 overflow-hidden`}>
+      {isDarkMode && isTop &&
+      <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            >
+            {meteors.map((el, idx) => {
+              const meteorCount = number || 15;
+              // Calculate position to evenly distribute meteors across container width
+              const position = idx * (2000 / meteorCount) - 400; // Spread across 800px range, centered
+      
+              return (
+                <span
+                  key={"meteor" + idx}
+                  className={cn(
+                    "animate-meteor-effect absolute h-0.5 w-0.5 rotate-[20deg] rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10]",
+                    "before:absolute before:top-1/2 before:h-[1px] before:w-[50px] before:-translate-y-[50%] before:transform before:bg-gradient-to-r before:from-[#64748b] before:to-transparent before:content-['']",
+                    className
+                  )}
+                  style={{
+                    top: "-40px", // Start above the container
+                    left: position + "px",
+                    animationDelay: Math.random() * 5 + "s", // Random delay between 0-5s
+                    animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s", // Keep some randomness in duration
+                  }}></span>
+              );
+            })}
+          </motion.div>
+      } 
+      
       <div className="relative flex flex-col items-center justify-center px-4 py-4 md:px-8">
         {/* Dark mode toggle button - positioned on the right */}
         <button
