@@ -34,7 +34,7 @@ const Navbar = ({number, className }) => {
     }
       
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'contact'];
+      const sections = ['home', 'about', 'experience', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for navbar
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -125,6 +125,7 @@ const Navbar = ({number, className }) => {
           <button onClick={() => scrollToSection('home')} className={getLinkClassName('home')}>HOME</button>
           <button onClick={() => scrollToSection('about')} className={getLinkClassName('about')}>ABOUT</button>
           <button onClick={() => scrollToSection('experience')} className={getLinkClassName('experience')}>EXPERIENCE</button>
+          <button onClick={() => scrollToSection('projects')} className={getLinkClassName('projects')}>PROJECT</button>
           <button onClick={() => scrollToSection('contact')} className={getLinkClassName('contact')}>CONTACT</button>
         </div>
       </div>
