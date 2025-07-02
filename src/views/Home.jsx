@@ -1,9 +1,7 @@
 import Man from './../assets/man.svg';
 import Heart from './../assets/heart.svg';
-import { cn } from "../utils/meteor";
 import { motion } from "motion/react";
 import { About } from '.';
-import {LampDemo} from '../components/Lamb';
 
 import { Linkedin, Github, MapPin, Mail } from 'lucide-react';
 
@@ -11,7 +9,7 @@ const Home = () => {
 
   const skills = [
     'Application system analysis and design',
-    'Develop applications using C# .NET, Java, Python, JavaScript',
+    'Develop applications using C# .NET, Java, Python, JavaScript, TS',
     'Design and build mobile applications using React Native',
     'Write multi-threaded program to process data from the queue system',
     'Work with caching and queue systems (Redis, RabbitMQ)',
@@ -30,7 +28,7 @@ const Home = () => {
           In the student's showcase event, I developed a Python-driven smart recycling system with inductive and capacitive sensors to distinguish metals from plastics, integrated AWS IoT for data exchange, deployed a React frontend on S3/CloudFront and a Node.js backend on EC2, and automated CI/CD with GitHub Actions.
           In a campus hackathon event, I analyzed mobility challenges, crafted UX prototypes in Figma, collaborated on ideation and prototyping, and pitched our solution. As a full-stack developer on my capstone, I built a game information and booking site using React and Node.js, managed Git workflows, and supported Scrum-based sprint planning.
         </>,
-      tech: ['NODEJS', 'REACTJS', 'MONGODB', 'AWS', 'EC2', 'S3', 'CLOUD FRONT', 'PYTHON', 'DEPLOYMENT', 'CI/CD', 'AGILE', 'SCRUM'],
+      tech: ['NODEJS', 'REACTJS', 'MONGODB', 'AWS', 'EC2', 'S3', 'CLOUD FRONT', 'PYTHON', 'DEPLOYMENT', 'CI/CD', 'AGILE', 'SCRUM', 'CMS'],
     },
     {
       title: 'SOFTWARE ENGINEER',
@@ -69,7 +67,7 @@ const Home = () => {
   return (
     <>
     <About />
-      <section id="home" className="hero-section border-b-4 border-dotted border-black dark:border-white mb-8 pt-16 pb-8 relative z-1 overflow-hidden">  
+      <section id="home" className="hero-section border-b-4 border-dotted border-black dark:border-white mb-8 pt-8 pb-8 relative z-1 overflow-hidden">  
         <div className='relative flex flex-col items-center justify-center text-center'>
           
         <motion.h1 
@@ -134,15 +132,15 @@ const Home = () => {
           transition={{ delay: 1.2, duration: 0.5, ease: "easeInOut" }}
         />
         <motion.p 
-          className="text-lg uppercase tracking-wide mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg uppercase tracking-wide mb-8 max-w-3xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.4, ease: "easeOut" }}
         >
-          WELCOME TO MY PORTFOLIO! I'M A FULL-STACK DEVELOPER WITH A PASSION FOR CREATING INNOVATIVE AND SCALABLE WEB APPLICATIONS. EXPLORE MY WORK AND CONNECT WITH ME!
+          WELCOME TO MY PORTFOLIO! I'M A FULL-STACK DEVELOPER WITH A PASSION FOR CREATING INNOVATIVE AND SCALABLE WEB, MOBILE, DESKTOP APPLICATIONS. EXPLORE MY WORK AND CONNECT WITH ME!
         </motion.p>
         <motion.div 
-          className='social-link flex gap-4 mb-12'
+          className='social-link flex gap-4 mb-8'
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 0.4, ease: "easeOut" }}
@@ -157,7 +155,7 @@ const Home = () => {
           </a>
         </motion.div>
         <motion.div 
-          className="flex justify-center space-x-8 text-sm uppercase tracking-wide"
+          className="flex justify-center space-x-8 text-sm uppercase tracking-wide flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.4, ease: "easeOut" }}

@@ -1,7 +1,6 @@
 
 import { cn } from "../utils/meteor";
-import { motion } from "motion/react";
-import React, {useState, useRef, useEffect} from "react";
+import {useState, useRef, useEffect} from "react";
 
 const getRandomStartPoint = () => {
   const side = Math.floor(Math.random() * 8);
